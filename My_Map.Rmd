@@ -1,0 +1,26 @@
+---
+title: "My Map"
+author: "Ayush Bhargava"
+date: "November 29, 2017"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+```{r}
+suppressWarnings(library(leaflet))
+df <- data.frame(latitude=c(36.145439,35.774332,35.784663), 
+                 longitude=c(-78.724508,-78.683675,-78.682095),
+                 col=c("red","blue","green"),
+                 stringsAsFactors = FALSE
+                 )
+df %>%
+        leaflet() %>%
+        addTiles() %>%
+        addCircleMarkers(color=df$col) %>%
+        addLegend(labels=c("Office","Home","School"), colors=c("red","blue","green"))
+```
+
+
+
